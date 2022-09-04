@@ -1,5 +1,42 @@
-
 body {
-  background: #262626;
   font-family: 'Game of Thrones';
+  color: #ffff;
+}
+
+#video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  
+}
+
+@media (min-aspect-ratio: 16/9){
+  #video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9){
+  #video {
+    width: auto;
+    height: 100%;
+  }
+}
+
+.responsive-img {
+  display: block;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  padding: 0%;
+  width: 70%;
+  height: 70%;
+}
+
+#main {
+  background-color: #262626;
+  text-align: center;
 }

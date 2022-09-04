@@ -2,31 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <title id="title"> something something</title>
+  <link rel="stylesheet" href="style.css"/>
+  <title id="title">GOT Quote Generator</title>
 </head>
 <body id="body">
+  <div>
+    <video autoplay loop muted plays-inline id="video">
+      <source src='Game of Thrones/smoke.mp4' type="video/mp4"></video>
+  </div>
   <nav class="grey">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">GOT Quote Generator</a>
+      <a href="#" class="brand-logo center" id="quoteLink">Get Random GOT Quote!</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
+        <li><a href="#" id="resetLink">Reset</a></li>
         <li><a href="badges.html">Components</a></li>
+        <!--<li>
+          <h2></h2>
+          <form id="searchForm">
+            <input type="text" placeholder="House...">
+            <input type='submit' value='Quote by House'/>
+          </form>
+        </li>-->
       </ul>
     </div>
   </nav>
-<!--<div class="searchBox">
-  <h2></h2>
-  <form id="searchForm">
-    <input type="text" placeholder="House">
-    <input type='submit' name='submit'/>
-  </form>
-</div>
-<div id='main' class="container">
 
-</div>-->
+<div id='main' class="container">
+  <div>
+
+  </div>
+
+</div>
   <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
