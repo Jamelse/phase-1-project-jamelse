@@ -21,6 +21,7 @@ body {
   bottom: 0;
   z-index: -1;
   object-fit: cover;
+  filter: saturate(50%)
   
 }
 
@@ -38,25 +39,37 @@ body {
   }
 }
 #nav {
-  background-color: #262626;
+  background-image: url('Game of Thrones/gotlogo.jpg');
   width: 100%;
+}
+#quoteLink:hover{
+  color: #E5991F;
+}
+
+#resetLink:hover{
+  color:#E5991F;
+}
+
+#link2:hover{
+  color:#E5991F;
 }
 
 .responsive-img {
+  align-content: top;
   display: block;
   margin-top: auto;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: auto;
-  padding: 0%;
-  width: 70%;
-  height: 70%;
+  width: 50%;
+  height: 50%;
 }
 
 #main {
-  color: black;
-  background: linear-gradient(#ffff, #262626);
+  color: linear-gradient(90deg,#7e7e7e 0%, #e3e3e3 25%, #787878 50%, #e3e3e3 75%, #7e7e7e 100%);;
+  background: radial-gradient(#414141,#1C1C1C);
   text-align: center;
+  padding: 2%;
 }
 
 .houseLogo {
@@ -65,5 +78,5 @@ body {
   width: 10%;
   height: 10%;
   bottom: -200%;
-  padding: 1%;
+  padding: 0%;
 }

@@ -21,7 +21,7 @@ function homePage(){
   const h1 = document.createElement('h1');
   
   // --Element innerText-- //
-  img.src = './Game of Thrones/Game-of-Thrones-logo.png';
+  img.src = './Game of Thrones/GOTlogo2.png';
   img.className = 'responsive-img';
   h1.innerText = 'Quote Generator';
   
@@ -43,11 +43,8 @@ function renderQuote(quote){
   ul.appendChild(li);
   mainDiv.appendChild(h2);
   mainDiv.appendChild(ul);
-  
 }
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+
 function randomQuote(){
   fetch (gotApi)
   .then(resp => resp.json())
