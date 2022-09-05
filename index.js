@@ -7,6 +7,7 @@ const container = document.querySelector('.container');
 const mainDiv = document.getElementById('main');
 const quoteLink = document.getElementById('quoteLink');
 const resetLink = document.querySelector('#resetLink');
+const accumulator = document.querySelector('#accumulate');
 
 // --Handlers-- //
 
@@ -16,16 +17,16 @@ function mainReset(){
 
 function homePage(){
   mainReset();
-  // --Element Creation-- //
+  //Element Creation
   const img = document.createElement('img')
   const h1 = document.createElement('h1');
   
-  // --Element innerText-- //
+  //Element innerText
   img.src = './Game of Thrones/GOTlogo2.png';
   img.className = 'responsive-img';
   h1.innerText = 'Quote Generator';
   
-  // --Element Appending-- //
+  //Element Appending
   mainDiv.appendChild(img);
   mainDiv.appendChild(h1);
   
@@ -36,6 +37,7 @@ function renderQuote(quote){
   const h2 = document.createElement('h2');
   const ul = document.createElement('ul');
   const li = document.createElement('li');
+  const btn = document.createElement('button');
   
   h2.innerText = quote.character.name;
   li.innerText = `"${quote.sentence}"`;
@@ -43,14 +45,14 @@ function renderQuote(quote){
   ul.appendChild(li);
   mainDiv.appendChild(h2);
   mainDiv.appendChild(ul);
+
 }
 
 function randomQuote(){
   fetch (gotApi)
   .then(resp => resp.json())
   .then(data => {
-    //data.character.name
-    characterImage(data.character.name)
+   characterImage(data.character.name)
     renderQuote(data)
     characterHouse(data.character.house.slug)
   })
@@ -77,7 +79,6 @@ function characterHouse(char){
     let img = document.createElement('img')
     img.className = "houseLogo";
     for (let x = 0; x<logo.length; x++){
-      //console.log(logo[x].name)}
       if (logo[x].name.toLowerCase().includes(char))
        img.src = logo[x].logoURL
         mainDiv.appendChild(img);
