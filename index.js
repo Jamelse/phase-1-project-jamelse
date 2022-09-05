@@ -38,14 +38,24 @@ function renderQuote(quote){
   const ul = document.createElement('ul');
   const li = document.createElement('li');
   const btn = document.createElement('button');
+  const i = document.createElement('i');
   
+  i.className = 'large material-icons left transparent'
+  btn.className = 'btn';
   h2.innerText = quote.character.name;
   li.innerText = `"${quote.sentence}"`;
- 
+  btn.innerText = 'Like';
+  i.innerText = ' favorite_border';
+
+  btn.addEventListener('click', () => {
+    
+  })
+  
+  btn.appendChild(i);
   ul.appendChild(li);
+  mainDiv.appendChild(btn);
   mainDiv.appendChild(h2);
   mainDiv.appendChild(ul);
-
 }
 
 function randomQuote(){
@@ -53,8 +63,8 @@ function randomQuote(){
   .then(resp => resp.json())
   .then(data => {
    characterImage(data.character.name)
-    renderQuote(data)
-    characterHouse(data.character.house.slug)
+   renderQuote(data)
+   characterHouse(data.character.house.slug)
   })
 }
 

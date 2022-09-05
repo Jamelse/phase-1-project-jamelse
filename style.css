@@ -13,6 +13,7 @@
 body {
   font-family: 'Game of Thrones';
   color: #ffff;
+  /*background-color: #1C1C1C;*/
 }
 
 #video {
@@ -20,9 +21,8 @@ body {
   right: 0;
   bottom: 0;
   z-index: -1;
-  object-fit: cover;
-  filter: saturate(50%)
-  
+  object-fit: fill;
+  /*filter: saturate(50%);*/
 }
 
 @media (min-aspect-ratio: 16/9){
@@ -70,6 +70,7 @@ body {
   background: radial-gradient(#414141,#1C1C1C);
   text-align: center;
   padding: 2%;
+
 }
 
 .houseLogo {
@@ -88,4 +89,22 @@ body {
   bottom: 200%;
   padding: 0%;
   float: right;
+}
+.large.material-icons.transparent {
+  border: 0px;
+  color: #f06292;
+}
+.btn {
+  align-items: center;
+  background-color: transparent;
+  font-family: 'Game of Thrones';
+  float: left;
+}
+
+.btn:hover {
+  background-color: #E5991F;
+  color: #414141;
+}
+.btn:onclick{
+  background-color: transparent;
 }
