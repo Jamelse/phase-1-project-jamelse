@@ -77,6 +77,15 @@ body {
   position: relative;
   width: 10%;
   height: 10%;
-  bottom: -200%;
   padding: 0%;
+  float: left;
+}
+.houseLogo2 {
+  display: block;
+  position: relative;
+  width: 10%;
+  height: 10%;
+  bottom: 200%;
+  padding: 0%;
+  float: right;
 }

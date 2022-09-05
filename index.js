@@ -76,13 +76,16 @@ function characterHouse(char){
   fetch(`https://api.got.show/api/show/houses`)
   .then(resp => resp.json())
   .then(logo => {
-    let img = document.createElement('img')
+    let img = document.createElement('img');
+    let img2 = document.createElement('img');
     img.className = "houseLogo";
+    img2.className = 'houseLogo2';
     for (let x = 0; x<logo.length; x++){
       if (logo[x].name.toLowerCase().includes(char))
-       img.src = logo[x].logoURL
+       img.src = logo[x].logoURL;
+        img2.src = img.src;
         mainDiv.appendChild(img);
-      
+        mainDiv.appendChild(img2);
     }
   })
 }
@@ -93,9 +96,7 @@ function characterHouse(char){
 function quoteLinkClickEvent(){
   quoteLink.addEventListener('click', (e) => {
     e.preventDefault;
-    characterHouse();
     randomQuote();
-    characterImage();
     
   })
 }
