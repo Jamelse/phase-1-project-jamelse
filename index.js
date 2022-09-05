@@ -7,8 +7,8 @@ const container = document.querySelector('.container');
 const mainDiv = document.getElementById('main');
 const quoteLink = document.getElementById('quoteLink');
 const resetLink = document.querySelector('#resetLink');
-const accumulator = document.querySelector('#accumulate');
-
+const likedQuotes = document.querySelector('#likedQuotes');
+let quotes = [];
 // --Handlers-- //
 
 function mainReset(){
@@ -32,7 +32,7 @@ function homePage(){
   
 }
 
-function renderQuote(quote){
+function renderQuotePage(quote){
  mainReset();
   const h2 = document.createElement('h2');
   const ul = document.createElement('ul');
@@ -48,7 +48,7 @@ function renderQuote(quote){
   i.innerText = ' favorite_border';
 
   btn.addEventListener('click', () => {
-    
+    likedQuote(quote);
   })
   
   btn.appendChild(i);
@@ -58,12 +58,32 @@ function renderQuote(quote){
   mainDiv.appendChild(ul);
 }
 
+function likedQuotesPage(){
+  mainReset();
+  showQuotes();
+}
+
+function showQuotes(){
+  const ul = document.createElement('ul');
+  quotes.forEach(quote => showQuote(quote, ul))
+  mainDiv.appendChild(ul);
+}
+
+function showQuote(quote, ul){
+  const li = document.createElement('li');
+  const h2 = document.createElement('h2');
+  li.innerText = quote.sentence
+  h2.innerText = quote.names
+  mainDiv.appendChild(h2);
+  ul.appendChild(li);
+}
+
 function randomQuote(){
   fetch (gotApi)
   .then(resp => resp.json())
   .then(data => {
    characterImage(data.character.name)
-   renderQuote(data)
+   renderQuotePage(data)
    characterHouse(data.character.house.slug)
   })
 }
@@ -100,8 +120,38 @@ function characterHouse(char){
   })
 }
 
+function quoteFetcher(){
+  fetch('http://localhost:3000/favorites')
+  .then(resp => resp.json())
+  .then(data => {
+    quotes = data;
+  })
+}
+
+function likedQuote(quote){
+  fetch('http://localhost:3000/favorites', {
+    method: 'POST',
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(quote)
+  })
+  .then(resp => resp.json())
+  .then(data => {
+   console.log(data);
+  })
+  
+}
 
 // --Event Listeners-- //
+
+function likedQuotesClickEvent(){
+  likedQuotes.addEventListener('click', (e) => {
+  e.preventDefault;
+  likedQuotesPage();
+})
+}
 
 function quoteLinkClickEvent(){
   quoteLink.addEventListener('click', (e) => {
@@ -122,6 +172,8 @@ function resetLinkClickEvent(){
 
 document.addEventListener('DOMContentLoaded', () => {
   homePage();
+  quoteFetcher();
+  likedQuotesClickEvent();
   quoteLinkClickEvent();
   resetLinkClickEvent();
 })

@@ -1,0 +1,24 @@
+{
+  "favorites": [
+    {
+      "id": 1,
+      "names": "something",
+      "sentence": "quote",
+      "image": "image",
+      "logos": "logos"
+    },
+    {},
+    {
+      "sentence": "Everyone who makes a joke about a dwarf's height thinks he's the only person ever to make a joke about a dwarf's height.",
+      "character": {
+        "name": "Tyrion Lannister",
+        "slug": "tyrion",
+        "house": {
+          "name": "House Lannister of Casterly Rock",
+          "slug": "lannister"
+        }
+      },
+      "id": 2
+    }
+  ]
+}
