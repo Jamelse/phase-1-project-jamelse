@@ -16,13 +16,18 @@ body {
   background: linear-gradient(#01262F, #1E0C02 );
   background-image: url('Game of Thrones/sparks.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat:repeat;
 }
 
 #nav {
   background-image: url('Game of Thrones/gotlogo.jpg');
   width: 100%;
 }
+
+#quoteLink{
+  background-color: transparent;
+}
+
 #quoteLink:hover{
   color: #FB8150;
 }

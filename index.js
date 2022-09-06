@@ -10,7 +10,6 @@ const resetLink = document.querySelector('#resetLink');
 const likedQuotes = document.querySelector('#likedQuotes');
 const likedUl = document.getElementById('likedUl');
 let quotes = [];
-let houseLogos = [];
 
 // --Handlers-- //
 
@@ -87,18 +86,20 @@ function showQuote(quote, div){
   btn.className = 'btn-floating btn-large';
   i.id = "btnX"
   i.className = "large material-icons transparent";
-  
   li.className = 'container';
-  
   i.innerText = 'close';
   li.innerText = `"${quote.sentence}" - ${quote.character.name}`;
+
+btn.addEventListener('click', (e) => {
+  e.preventDefault;
+  removeQuote(quote.id);
+  ul.remove();
+})
+  
   btn.appendChild(i);
-  
-  
   ul.appendChild(btn);
   ul.appendChild(li);
   div.appendChild(ul);
-  
 }
 
 function randomQuote(){
@@ -170,6 +171,20 @@ function likedQuote(quote){
   
 }
 
+function removeQuote(id){
+  fetch(`http://localhost:3000/favorites/${id}`, {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(resp => resp.json())
+  .then(data => {
+    console.log(data);
+  })
+}
+
+
 // --Event Listeners-- //
 
 function likedQuotesClickEvent(){
@@ -193,7 +208,6 @@ function resetLinkClickEvent(){
     homePage();
   })
 }
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
