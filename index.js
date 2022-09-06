@@ -8,7 +8,27 @@ let quotes = [];
 
 // --Element Creators-- //
 
-const createImg = () => 
+const createImg = () => { 
+  const img = document.createElement('img');
+  return img;
+}
+const createH2 = () => {
+  const h2 = document.createElement('h2');
+  return h2;
+}
+const createUl = () => {
+  const ul = document.createElement('ul');
+  return ul;
+}
+const createLi = () => {
+  const li = document.createElement('li');
+  return li;
+}
+const createBtn = () => {
+  const btn = document.createElement('button');
+  return btn;
+}
+
 
 // --Handlers-- //
 
