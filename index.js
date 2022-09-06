@@ -8,7 +8,10 @@ const mainDiv = document.getElementById('main');
 const quoteLink = document.getElementById('quoteLink');
 const resetLink = document.querySelector('#resetLink');
 const likedQuotes = document.querySelector('#likedQuotes');
+const likedUl = document.getElementById('likedUl');
 let quotes = [];
+let houseLogos = [];
+
 // --Handlers-- //
 
 function mainReset(){
@@ -49,6 +52,9 @@ function renderQuotePage(quote){
 
   btn.addEventListener('click', () => {
     likedQuote(quote);
+    i.innerText = 'favorite';
+    btn.style.background = 'transparent';
+    btn.className = 'btn disabled';
   })
   
   btn.appendChild(i);
@@ -64,18 +70,35 @@ function likedQuotesPage(){
 }
 
 function showQuotes(){
-  const ul = document.createElement('ul');
-  quotes.forEach(quote => showQuote(quote, ul))
-  mainDiv.appendChild(ul);
+  const div = document.createElement('div');
+  div.className = "containter";
+  
+  quotes.forEach(quote => showQuote(quote, div))
+  mainDiv.appendChild(div);
 }
 
-function showQuote(quote, ul){
+function showQuote(quote, div){
+  const ul = document.createElement('ul');
   const li = document.createElement('li');
-  const h2 = document.createElement('h2');
-  li.innerText = quote.sentence
-  h2.innerText = quote.names
-  mainDiv.appendChild(h2);
+  const btn = document.createElement('button');
+  const i = document.createElement('i');
+  
+  btn.id = 'remove-button';
+  btn.className = 'btn-floating btn-large';
+  i.id = "btnX"
+  i.className = "large material-icons transparent";
+  
+  li.className = 'container';
+  
+  i.innerText = 'close';
+  li.innerText = `"${quote.sentence}" - ${quote.character.name}`;
+  btn.appendChild(i);
+  
+  
+  ul.appendChild(btn);
   ul.appendChild(li);
+  div.appendChild(ul);
+  
 }
 
 function randomQuote(){
@@ -84,7 +107,7 @@ function randomQuote(){
   .then(data => {
    characterImage(data.character.name)
    renderQuotePage(data)
-   characterHouse(data.character.house.slug)
+   characterHouseLogos(data.character.house.slug)
   })
 }
 
@@ -102,7 +125,7 @@ function characterImage(char){
   })
  }
 
-function characterHouse(char){
+function characterHouseLogos(char){
   fetch(`https://api.got.show/api/show/houses`)
   .then(resp => resp.json())
   .then(logo => {
@@ -111,14 +134,17 @@ function characterHouse(char){
     img.className = "houseLogo";
     img2.className = 'houseLogo2';
     for (let x = 0; x<logo.length; x++){
-      if (logo[x].name.toLowerCase().includes(char))
-       img.src = logo[x].logoURL;
-        img2.src = img.src;
+      if (logo[x].name.toLowerCase().includes(char)){
+       img.src =  logo[x].logoURL;
+         img2.src = img.src;
         mainDiv.appendChild(img);
-        mainDiv.appendChild(img2);
+         mainDiv.appendChild(img2);
+      }
     }
   })
 }
+
+
 
 function quoteFetcher(){
   fetch('http://localhost:3000/favorites')
@@ -139,7 +165,7 @@ function likedQuote(quote){
   })
   .then(resp => resp.json())
   .then(data => {
-   console.log(data);
+   quotes.push(data);
   })
   
 }

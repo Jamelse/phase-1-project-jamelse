@@ -1,14 +1,6 @@
 {
   "favorites": [
     {
-      "id": 1,
-      "names": "something",
-      "sentence": "quote",
-      "image": "image",
-      "logos": "logos"
-    },
-    {},
-    {
       "sentence": "Everyone who makes a joke about a dwarf's height thinks he's the only person ever to make a joke about a dwarf's height.",
       "character": {
         "name": "Tyrion Lannister",
@@ -19,6 +11,138 @@
         }
       },
       "id": 2
+    },
+    {
+      "sentence": "Laughter is poison to fear.",
+      "character": {
+        "name": "Catelyn Stark",
+        "slug": "catelyn",
+        "house": {
+          "name": "House Stark of Winterfell",
+          "slug": "stark"
+        }
+      },
+      "id": 3
+    },
+    {
+      "sentence": "Every man must die, Jon Snow. but first, he must live",
+      "character": {
+        "name": "Ygritte",
+        "slug": "ygritte",
+        "house": {
+          "name": null,
+          "slug": null
+        }
+      },
+      "id": 4
+    },
+    {
+      "sentence": "He was no dragon. Fire cannot kill a dragon.",
+      "character": {
+        "name": "Daenerys Targaryen",
+        "slug": "daenerys",
+        "house": {
+          "name": "House Targaryen of King's Landing",
+          "slug": "targaryen"
+        }
+      },
+      "id": 5
+    },
+    {
+      "sentence": "Love is the death of duty.",
+      "character": {
+        "name": "Jon Snow",
+        "slug": "jon",
+        "house": {
+          "name": "House Stark of Winterfell",
+          "slug": "stark"
+        }
+      },
+      "id": 6
+    },
+    {
+      "sentence": "I'm the King, I get what I want. I never loved my brothers. Sad thing for a man to admit, but it's true. You were the brother I chose.",
+      "character": {
+        "name": "Robert Baratheon",
+        "slug": "robert",
+        "house": {
+          "name": "House Baratheon of Dragonstone",
+          "slug": "baratheon"
+        }
+      },
+      "id": 7
+    },
+    {
+      "sentence": "I know that our enemies hate each other almost as much as they hate us.",
+      "character": {
+        "name": "Tyrion Lannister",
+        "slug": "tyrion",
+        "house": {
+          "name": "House Lannister of Casterly Rock",
+          "slug": "lannister"
+        }
+      },
+      "id": 8
+    },
+    {
+      "sentence": "The things I do for love.",
+      "character": {
+        "name": "Jaime Lannister",
+        "slug": "jaime",
+        "house": {
+          "name": "House Lannister of Casterly Rock",
+          "slug": "lannister"
+        }
+      },
+      "id": 9
+    },
+    {
+      "sentence": "The things I do for love.",
+      "character": {
+        "name": "Jaime Lannister",
+        "slug": "jaime",
+        "house": {
+          "name": "House Lannister of Casterly Rock",
+          "slug": "lannister"
+        }
+      },
+      "id": 10
+    },
+    {
+      "sentence": "Never forget what you are. The rest of the world will not. Wear it like armor, and it can never be used to hurt you.",
+      "character": {
+        "name": "Tyrion Lannister",
+        "slug": "tyrion",
+        "house": {
+          "name": "House Lannister of Casterly Rock",
+          "slug": "lannister"
+        }
+      },
+      "id": 11
+    },
+    {
+      "sentence": "A man with no motive is a man no one suspects. Always keep your foes confused.",
+      "character": {
+        "name": "Petyr Baelish",
+        "slug": "baelish",
+        "house": {
+          "name": "House Baelish of Harrenhal",
+          "slug": "baelish"
+        }
+      },
+      "id": 12
+    },
+    {
+      "sentence": "If you think this has a happy ending, you haven't been paying attention.",
+      "character": {
+        "name": "Ramsay Bolton",
+        "slug": "ramsay",
+        "house": {
+          "name": "House Bolton of the Dreadfort",
+          "slug": "bolton"
+        }
+      },
+      "id": 13
     }
   ]
 }

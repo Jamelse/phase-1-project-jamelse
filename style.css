@@ -13,45 +13,26 @@
 body {
   font-family: 'Game of Thrones';
   color: #ffff;
-  /*background-color: #1C1C1C;*/
+  background: linear-gradient(#01262F, #1E0C02 );
+  background-image: url('Game of Thrones/sparks.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-#video {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  object-fit: fill;
-  /*filter: saturate(50%);*/
-}
-
-@media (min-aspect-ratio: 16/9){
-  #video {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-aspect-ratio: 16/9){
-  #video {
-    width: auto;
-    height: 100%;
-  }
-}
 #nav {
   background-image: url('Game of Thrones/gotlogo.jpg');
   width: 100%;
 }
 #quoteLink:hover{
-  color: #E5991F;
+  color: #FB8150;
 }
 
 #resetLink:hover{
-  color:#E5991F;
+  color:#FB8150;
 }
 
 #likedQuotes:hover{
-  color:#E5991F;
+  color:#FB8150;
 }
 
 .responsive-img {
@@ -65,8 +46,8 @@ body {
   height: 50%;
 }
 
-#main {
-  color: linear-gradient(90deg,#7e7e7e 0%, #e3e3e3 25%, #787878 50%, #e3e3e3 75%, #7e7e7e 100%);;
+.container {
+  color: white;
   background: radial-gradient(#414141,#1C1C1C);
   text-align: center;
   padding: 2%;
@@ -102,9 +83,23 @@ body {
 }
 
 .btn:hover {
-  background-color: #E5991F;
+  background-color: #FB8150;
   color: #414141;
 }
-.btn:onclick{
-  background-color: transparent;
+#remove-button {
+  position:relative;
+  float: left;
+  background-color: transparent;  
+}
+
+#remove-button:hover{
+  background-color: red;
+}
+
+#btnX {
+  color: lightgrey;
+}
+#btnX:hover{
+  background-color: red;
+  color: white;
 }
