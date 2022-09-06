@@ -1,16 +1,19 @@
 // --Nodes-- //
 
-const container = document.querySelector('.container');
 const mainDiv = () => document.getElementById('main');
-const quoteLink = document.getElementById('quoteLink');
-const resetLink = document.querySelector('#resetLink');
-const likedQuotes = document.querySelector('#likedQuotes');
+const quoteLink = () => document.getElementById('quoteLink');
+const resetLink = () => document.querySelector('#resetLink');
+const likedQuotes = () => document.querySelector('#likedQuotes');
 let quotes = [];
+
+// --Element Creators-- //
+
+const createImg = () => 
 
 // --Handlers-- //
 
 function mainReset(){ //Main div reset
-  mainDiv.innerHTML = '';
+  mainDiv().innerHTML = '';
 }
 
 function homePage(){ //Home page creation
@@ -22,9 +25,7 @@ function homePage(){ //Home page creation
   img.className = 'responsive-img';
   h1.innerText = 'Quote Generator';
   
-  mainDiv.appendChild(img);
-  mainDiv.appendChild(h1);
-  
+  mainDiv.append(img, h1); 
 }
 
 function renderQuotePage(quote){ //Random quote page bulk creation- 
@@ -51,9 +52,7 @@ function renderQuotePage(quote){ //Random quote page bulk creation-
   
   btn.appendChild(i);
   ul.appendChild(li);
-  mainDiv.appendChild(btn);
-  mainDiv.appendChild(h2);
-  mainDiv.appendChild(ul);
+  mainDiv().append(btn, h2, ul);
 }
 
 function likedQuotesPage(){//Like page rendering
@@ -66,7 +65,7 @@ function showQuotes(){ //Like page appending
   div.className = "containter";
   
   quotes.forEach(quote => showQuote(quote, div))
-  mainDiv.appendChild(div);
+  mainDiv().appendChild(div);
 }
 
 function showQuote(quote, div){ //Like page bulk creation
@@ -116,7 +115,7 @@ function characterImage(char){ //Separate API for character images
     for (let i = 0; i<img.length; i++){
     if (img[i].name.includes(char)){
     image.src = img[i].image;
-    mainDiv.appendChild(image)
+    mainDiv().appendChild(image)
       } 
     }
   })
@@ -134,8 +133,8 @@ function characterHouseLogos(char){ //Separate API for house logos
       if (logo[x].name.toLowerCase().includes(char)){
        img.src =  logo[x].logoURL;
          img2.src = img.src;
-        mainDiv.appendChild(img);
-        mainDiv.appendChild(img2);
+        mainDiv().appendChild(img);
+        mainDiv().appendChild(img2);
       }
     }
   })
@@ -173,7 +172,7 @@ function removeQuote(id){ //Local JSON server DELETE for delete button
     }
   })
   .then(resp => resp.json())
-  .then(data => { //.try?
+  .then(data => { //.try? and .catch
     console.log(data);
   })
 }
@@ -181,7 +180,7 @@ function removeQuote(id){ //Local JSON server DELETE for delete button
 // --Event Listeners-- //
 
 function likedQuotesClickEvent(){
-  likedQuotes.addEventListener('click', (e) => {
+  likedQuotes().addEventListener('click', (e) => {
     e.preventDefault();
     likedQuotesPage();
   
@@ -189,14 +188,14 @@ function likedQuotesClickEvent(){
 }
 
 function quoteLinkClickEvent(){
-  quoteLink.addEventListener('click', () => {
+  quoteLink().addEventListener('click', () => {
     randomQuote();
     
   })
 }
 
 function resetLinkClickEvent(){
-  resetLink.addEventListener('click', () => {
+  resetLink().addEventListener('click', () => {
     location.reload();
   })
 }
