@@ -1,7 +1,7 @@
 // --Nodes-- //
 
 const container = document.querySelector('.container');
-const mainDiv = document.getElementById('main');
+const mainDiv = () => document.getElementById('main');
 const quoteLink = document.getElementById('quoteLink');
 const resetLink = document.querySelector('#resetLink');
 const likedQuotes = document.querySelector('#likedQuotes');
@@ -91,8 +91,7 @@ function showQuote(quote, div){ //Like page bulk creation
   })
 
   btn.appendChild(i);
-  ul.appendChild(btn);
-  ul.appendChild(li);
+  ul.append(btn, li);
   div.appendChild(ul);
 
 }
@@ -113,7 +112,7 @@ function characterImage(char){ //Separate API for character images
   fetch(`https://api.got.show/api/show/characters`)
   .then(resp => resp.json())
   .then(img =>{
-    let image = document.createElement('img')
+    const image = document.createElement('img')
     for (let i = 0; i<img.length; i++){
     if (img[i].name.includes(char)){
     image.src = img[i].image;
@@ -127,8 +126,8 @@ function characterHouseLogos(char){ //Separate API for house logos
   fetch(`https://api.got.show/api/show/houses`)
   .then(resp => resp.json())
   .then(logo => {
-    let img = document.createElement('img');
-    let img2 = document.createElement('img');
+    const img = document.createElement('img');
+    const img2 = document.createElement('img');
     img.className = "houseLogo";
     img2.className = 'houseLogo2';
     for (let x = 0; x<logo.length; x++){
@@ -136,7 +135,7 @@ function characterHouseLogos(char){ //Separate API for house logos
        img.src =  logo[x].logoURL;
          img2.src = img.src;
         mainDiv.appendChild(img);
-         mainDiv.appendChild(img2);
+        mainDiv.appendChild(img2);
       }
     }
   })
@@ -174,8 +173,8 @@ function removeQuote(id){ //Local JSON server DELETE for delete button
     }
   })
   .then(resp => resp.json())
-  .then(data => {
-    data;
+  .then(data => { //.try?
+    console.log(data);
   })
 }
 
