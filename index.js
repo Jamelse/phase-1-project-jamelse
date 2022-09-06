@@ -28,7 +28,7 @@ function homePage(){ //Home page creation
 }
 
 function renderQuotePage(quote){ //Random quote page bulk creation- 
- mainReset();                    //Rendering at line 100 under Fetch Requests
+ mainReset();                    //Rendering Fetch Requests
   const h2 = document.createElement('h2');
   const ul = document.createElement('ul');
   const li = document.createElement('li');
@@ -42,7 +42,7 @@ function renderQuotePage(quote){ //Random quote page bulk creation-
   btn.innerText = 'Like';
   i.innerText = ' favorite_border';
 
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', () => { // Like button Event
     likedQuote(quote);
     i.innerText = 'favorite';
     btn.style.background = 'transparent';
@@ -83,16 +83,18 @@ function showQuote(quote, div){ //Like page bulk creation
   i.innerText = 'close';
   li.innerText = `"${quote.sentence}" - ${quote.character.name}`;
 
-btn.addEventListener('click', (e) => {
-  e.preventDefault;
-  removeQuote(quote.id);
-  ul.remove();
-})
-  
+  btn.addEventListener('click', (e) => { //Delete button event       
+    e.preventDefault(); 
+    div.removeChild(ul);
+    //location.reload();
+    removeQuote(quote.id); 
+  })
+
   btn.appendChild(i);
   ul.appendChild(btn);
   ul.appendChild(li);
   div.appendChild(ul);
+
 }
 
 // --Fetch Requests-- //
@@ -173,7 +175,7 @@ function removeQuote(id){ //Local JSON server DELETE for delete button
   })
   .then(resp => resp.json())
   .then(data => {
-    console.log(data);
+    data;
   })
 }
 
@@ -181,23 +183,22 @@ function removeQuote(id){ //Local JSON server DELETE for delete button
 
 function likedQuotesClickEvent(){
   likedQuotes.addEventListener('click', (e) => {
-  e.preventDefault;
-  likedQuotesPage();
+    e.preventDefault();
+    likedQuotesPage();
+  
 })
 }
 
 function quoteLinkClickEvent(){
-  quoteLink.addEventListener('click', (e) => {
-    e.preventDefault;
+  quoteLink.addEventListener('click', () => {
     randomQuote();
     
   })
 }
 
 function resetLinkClickEvent(){
-  resetLink.addEventListener('click', (e) => {
-    e.preventDefault;
-    homePage();
+  resetLink.addEventListener('click', () => {
+    location.reload();
   })
 }
 

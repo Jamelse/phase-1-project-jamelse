@@ -13,100 +13,16 @@
       "id": 6
     },
     {
-      "sentence": "I'm the King, I get what I want. I never loved my brothers. Sad thing for a man to admit, but it's true. You were the brother I chose.",
+      "sentence": "Burn them all!",
       "character": {
-        "name": "Robert Baratheon",
-        "slug": "robert",
+        "name": "Aerys II Targaryen",
+        "slug": "aerys",
         "house": {
-          "name": "House Baratheon of Dragonstone",
-          "slug": "baratheon"
+          "name": "House Targaryen of King's Landing",
+          "slug": "targaryen"
         }
       },
       "id": 7
-    },
-    {
-      "sentence": "I know that our enemies hate each other almost as much as they hate us.",
-      "character": {
-        "name": "Tyrion Lannister",
-        "slug": "tyrion",
-        "house": {
-          "name": "House Lannister of Casterly Rock",
-          "slug": "lannister"
-        }
-      },
-      "id": 8
-    },
-    {
-      "sentence": "The things I do for love.",
-      "character": {
-        "name": "Jaime Lannister",
-        "slug": "jaime",
-        "house": {
-          "name": "House Lannister of Casterly Rock",
-          "slug": "lannister"
-        }
-      },
-      "id": 9
-    },
-    {
-      "sentence": "The things I do for love.",
-      "character": {
-        "name": "Jaime Lannister",
-        "slug": "jaime",
-        "house": {
-          "name": "House Lannister of Casterly Rock",
-          "slug": "lannister"
-        }
-      },
-      "id": 10
-    },
-    {
-      "sentence": "Never forget what you are. The rest of the world will not. Wear it like armor, and it can never be used to hurt you.",
-      "character": {
-        "name": "Tyrion Lannister",
-        "slug": "tyrion",
-        "house": {
-          "name": "House Lannister of Casterly Rock",
-          "slug": "lannister"
-        }
-      },
-      "id": 11
-    },
-    {
-      "sentence": "A man with no motive is a man no one suspects. Always keep your foes confused.",
-      "character": {
-        "name": "Petyr Baelish",
-        "slug": "baelish",
-        "house": {
-          "name": "House Baelish of Harrenhal",
-          "slug": "baelish"
-        }
-      },
-      "id": 12
-    },
-    {
-      "sentence": "If you think this has a happy ending, you haven't been paying attention.",
-      "character": {
-        "name": "Ramsay Bolton",
-        "slug": "ramsay",
-        "house": {
-          "name": "House Bolton of the Dreadfort",
-          "slug": "bolton"
-        }
-      },
-      "id": 13
-    },
-    {
-      "sentence": "The freedom to make my own mistakes was all I ever wanted.",
-      "character": {
-        "name": "Mance Rayder",
-        "slug": "mance",
-        "house": {
-          "name": null,
-          "slug": null
-        }
-      },
-      "id": 14
     }
   ]
 }
