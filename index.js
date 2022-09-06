@@ -32,10 +32,18 @@ function homePage(){ //Home page creation
   mainDiv().append(img, h1); 
 }
 
-function randomQuotePage(data){ //Rendering Fetch Requests
+function randomQuotePage(data){ //Rendering Fetch Requests for random quote page
   characterImage(data.character.name);
   renderQuotePage(data);
   characterHouseLogos(data.character.house.slug);
+}
+
+
+
+function characterImageCreation(img, char){ //Character Image Creation
+  const image = createImg();
+  image.src = img.find((i) => i.name.includes(char)).image
+  mainDiv().appendChild(image);
 }
 
 function renderQuotePage(quote){ //Random quote page bulk creation- 
@@ -113,15 +121,7 @@ function randomQuote(){ //Random quote API + Random quote page render
   })
 }
 
-function characterImageCreation(img, char){
-  const image = createImg();
-  for (let i = 0; i<img.length; i++){
-    if (img[i].name.includes(char)){
-      image.src = img[i].image;
-      mainDiv().appendChild(image);
-    }
-  }
-}
+
 
 function characterImage(char){ //Separate API for character images
   fetch(`https://api.got.show/api/show/characters`)
