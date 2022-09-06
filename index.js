@@ -19,16 +19,13 @@ function mainReset(){
 
 function homePage(){
   mainReset();
-  //Element Creation
   const img = document.createElement('img')
   const h1 = document.createElement('h1');
   
-  //Element innerText
   img.src = './Game of Thrones/GOTlogo2.png';
   img.className = 'responsive-img';
   h1.innerText = 'Quote Generator';
   
-  //Element Appending
   mainDiv.appendChild(img);
   mainDiv.appendChild(h1);
   
@@ -102,7 +99,9 @@ btn.addEventListener('click', (e) => {
   div.appendChild(ul);
 }
 
-function randomQuote(){
+// --Fetch Requests-- //
+
+function randomQuote(){ //Random quote API
   fetch (gotApi)
   .then(resp => resp.json())
   .then(data => {
@@ -112,7 +111,7 @@ function randomQuote(){
   })
 }
 
-function characterImage(char){
+function characterImage(char){ //Separate API for character images
   fetch(`https://api.got.show/api/show/characters`)
   .then(resp => resp.json())
   .then(img =>{
@@ -126,7 +125,7 @@ function characterImage(char){
   })
  }
 
-function characterHouseLogos(char){
+function characterHouseLogos(char){ //Separate API for house logos
   fetch(`https://api.got.show/api/show/houses`)
   .then(resp => resp.json())
   .then(logo => {
@@ -145,9 +144,7 @@ function characterHouseLogos(char){
   })
 }
 
-
-
-function quoteFetcher(){
+function quoteFetcher(){ //Local Json server fetch
   fetch('http://localhost:3000/favorites')
   .then(resp => resp.json())
   .then(data => {
@@ -155,7 +152,7 @@ function quoteFetcher(){
   })
 }
 
-function likedQuote(quote){
+function likedQuote(quote){ //Local JSON server POST for like button
   fetch('http://localhost:3000/favorites', {
     method: 'POST',
     headers: {
@@ -171,7 +168,7 @@ function likedQuote(quote){
   
 }
 
-function removeQuote(id){
+function removeQuote(id){ //Local JSON server DELETE for delete button
   fetch(`http://localhost:3000/favorites/${id}`, {
     method: 'DELETE',
     headers: {
@@ -183,7 +180,6 @@ function removeQuote(id){
     console.log(data);
   })
 }
-
 
 // --Event Listeners-- //
 
@@ -208,7 +204,6 @@ function resetLinkClickEvent(){
     homePage();
   })
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
   homePage();
