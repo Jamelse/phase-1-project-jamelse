@@ -8,27 +8,11 @@ let quotes = [];
 
 // --Element Creators-- //
 
-const createImg = () => { 
-  const img = document.createElement('img');
-  return img;
-}
-const createH2 = () => {
-  const h2 = document.createElement('h2');
-  return h2;
-}
-const createUl = () => {
-  const ul = document.createElement('ul');
-  return ul;
-}
-const createLi = () => {
-  const li = document.createElement('li');
-  return li;
-}
-const createBtn = () => {
-  const btn = document.createElement('button');
-  return btn;
-}
-
+const createImg = () => document.createElement('img');
+const createH2 = () => document.createElement('h2');
+const createUl = () => document.createElement('ul');
+const createLi = () => document.createElement('li');
+const createBtn = () => document.createElement('button');
 
 // --Handlers-- //
 
@@ -38,22 +22,28 @@ function mainReset(){ //Main div reset
 
 function homePage(){ //Home page creation
   mainReset();
-  const img = document.createElement('img')
+  const img = createImg();
   const h1 = document.createElement('h1');
   
   img.src = './Game of Thrones/GOTlogo2.png';
   img.className = 'responsive-img';
   h1.innerText = 'Quote Generator';
   
-  mainDiv.append(img, h1); 
+  mainDiv().append(img, h1); 
+}
+
+function randomQuotePage(data){ //Rendering Fetch Requests
+  characterImage(data.character.name);
+  renderQuotePage(data);
+  characterHouseLogos(data.character.house.slug);
 }
 
 function renderQuotePage(quote){ //Random quote page bulk creation- 
- mainReset();                    //Rendering Fetch Requests
-  const h2 = document.createElement('h2');
-  const ul = document.createElement('ul');
-  const li = document.createElement('li');
-  const btn = document.createElement('button');
+ mainReset();                    
+  const h2 = createH2();
+  const ul = createUl();
+  const li = createLi();
+  const btn = createBtn();
   const i = document.createElement('i');
   
   i.className = 'large material-icons left transparent'
@@ -89,9 +79,9 @@ function showQuotes(){ //Like page appending
 }
 
 function showQuote(quote, div){ //Like page bulk creation
-  const ul = document.createElement('ul');
-  const li = document.createElement('li');
-  const btn = document.createElement('button');
+  const ul = createUl();
+  const li = createLi();
+  const btn = createBtn();
   const i = document.createElement('i');
   
   btn.id = 'remove-button';
@@ -105,14 +95,12 @@ function showQuote(quote, div){ //Like page bulk creation
   btn.addEventListener('click', (e) => { //Delete button event       
     e.preventDefault(); 
     div.removeChild(ul);
-    //location.reload();
     removeQuote(quote.id); 
   })
 
   btn.appendChild(i);
   ul.append(btn, li);
   div.appendChild(ul);
-
 }
 
 // --Fetch Requests-- //
@@ -121,23 +109,25 @@ function randomQuote(){ //Random quote API + Random quote page render
   fetch ('https://api.gameofthronesquotes.xyz/v1/random')
   .then(resp => resp.json())
   .then(data => {
-   characterImage(data.character.name)
-   renderQuotePage(data)
-   characterHouseLogos(data.character.house.slug)
+    randomQuotePage(data)
   })
+}
+
+function characterImageCreation(img, char){
+  const image = createImg();
+  for (let i = 0; i<img.length; i++){
+    if (img[i].name.includes(char)){
+      image.src = img[i].image;
+      mainDiv().appendChild(image);
+    }
+  }
 }
 
 function characterImage(char){ //Separate API for character images
   fetch(`https://api.got.show/api/show/characters`)
   .then(resp => resp.json())
   .then(img =>{
-    const image = document.createElement('img')
-    for (let i = 0; i<img.length; i++){
-    if (img[i].name.includes(char)){
-    image.src = img[i].image;
-    mainDiv().appendChild(image)
-      } 
-    }
+    characterImageCreation(img, char);
   })
  }
 
@@ -210,8 +200,7 @@ function likedQuotesClickEvent(){
 function quoteLinkClickEvent(){
   quoteLink().addEventListener('click', () => {
     randomQuote();
-    
-  })
+    })
 }
 
 function resetLinkClickEvent(){
@@ -223,7 +212,7 @@ function resetLinkClickEvent(){
 document.addEventListener('DOMContentLoaded', () => {
   homePage();
   quoteFetcher();
-  likedQuotesClickEvent();
   quoteLinkClickEvent();
   resetLinkClickEvent();
+  likedQuotesClickEvent();
 })
