@@ -1,6 +1,3 @@
-const gotApi = 'https://api.gameofthronesquotes.xyz/v1/random';
-const imgApi = 'https://api.got.show/api/show/characters';
-
 // --Nodes-- //
 
 const container = document.querySelector('.container');
@@ -8,16 +5,15 @@ const mainDiv = document.getElementById('main');
 const quoteLink = document.getElementById('quoteLink');
 const resetLink = document.querySelector('#resetLink');
 const likedQuotes = document.querySelector('#likedQuotes');
-const likedUl = document.getElementById('likedUl');
 let quotes = [];
 
 // --Handlers-- //
 
-function mainReset(){
+function mainReset(){ //Main div reset
   mainDiv.innerHTML = '';
 }
 
-function homePage(){
+function homePage(){ //Home page creation
   mainReset();
   const img = document.createElement('img')
   const h1 = document.createElement('h1');
@@ -31,8 +27,8 @@ function homePage(){
   
 }
 
-function renderQuotePage(quote){
- mainReset();
+function renderQuotePage(quote){ //Random quote page bulk creation- 
+ mainReset();                    //Rendering at line 100 under Fetch Requests
   const h2 = document.createElement('h2');
   const ul = document.createElement('ul');
   const li = document.createElement('li');
@@ -60,12 +56,12 @@ function renderQuotePage(quote){
   mainDiv.appendChild(ul);
 }
 
-function likedQuotesPage(){
+function likedQuotesPage(){//Like page rendering
   mainReset();
   showQuotes();
 }
 
-function showQuotes(){
+function showQuotes(){ //Like page appending 
   const div = document.createElement('div');
   div.className = "containter";
   
@@ -73,7 +69,7 @@ function showQuotes(){
   mainDiv.appendChild(div);
 }
 
-function showQuote(quote, div){
+function showQuote(quote, div){ //Like page bulk creation
   const ul = document.createElement('ul');
   const li = document.createElement('li');
   const btn = document.createElement('button');
@@ -101,8 +97,8 @@ btn.addEventListener('click', (e) => {
 
 // --Fetch Requests-- //
 
-function randomQuote(){ //Random quote API
-  fetch (gotApi)
+function randomQuote(){ //Random quote API + Random quote page render
+  fetch ('https://api.gameofthronesquotes.xyz/v1/random')
   .then(resp => resp.json())
   .then(data => {
    characterImage(data.character.name)
