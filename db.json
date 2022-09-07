@@ -47,6 +47,18 @@
         }
       },
       "id": 9
+    },
+    {
+      "sentence": "By what right does the wolf judge the lion?",
+      "character": {
+        "name": "Jaime Lannister",
+        "slug": "jaime",
+        "house": {
+          "name": "House Lannister of Casterly Rock",
+          "slug": "lannister"
+        }
+      },
+      "id": 10
     }
   ]
 }

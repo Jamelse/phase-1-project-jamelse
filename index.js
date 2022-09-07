@@ -13,6 +13,7 @@ const createH2 = () => document.createElement('h2');
 const createUl = () => document.createElement('ul');
 const createLi = () => document.createElement('li');
 const createBtn = () => document.createElement('button');
+const createI = () => document.createElement('i');
 
 // --Handlers-- //
 
@@ -38,13 +39,13 @@ function randomQuotePage(data){ //Rendering Fetch Requests for random quote page
   characterHouseLogos(data.character.house.slug);
 }
 
-function characterImageCreation(img, char){ //Character Image Creation
-  const image = createImg();
-  image.src = img.find((i) => i.name.includes(char)).image
-  mainDiv().appendChild(image);
+function characterImageCreation(images, char){ //Character Image Creation
+  const img = createImg();
+  img.src = images.find((i) => i.name.includes(char)).image
+  mainDiv().appendChild(img);
 }
 
-function characterHouseLogosCreation(logo, char){
+function characterHouseLogosCreation(logo, char){ // Character Logos Creation
   const img1 = createImg();
   const img2 = createImg();
   img1.className = 'houseLogo';
@@ -60,7 +61,7 @@ function renderQuotePage(quote){ //Random quote page bulk creation-
   const ul = createUl();
   const li = createLi();
   const btn = createBtn();
-  const i = document.createElement('i');
+  const i = createI();
   
   i.className = 'large material-icons left transparent'
   btn.className = 'btn';
@@ -69,13 +70,8 @@ function renderQuotePage(quote){ //Random quote page bulk creation-
   btn.innerText = 'Like';
   i.innerText = ' favorite_border';
 
-  btn.addEventListener('click', () => { // Like button Event
-    likedQuote(quote);
-    i.innerText = 'favorite';
-    btn.style.background = 'transparent';
-    btn.className = 'btn disabled';
-  })
-  
+  likeButtonEvent(btn, quote, i); // Like button Event
+    
   btn.appendChild(i);
   ul.appendChild(li);
   mainDiv().append(btn, h2, ul);
@@ -99,7 +95,7 @@ function showQuote(quote, div){ //Like page bulk creation
   const ul = createUl();
   const li = createLi();
   const btn = createBtn();
-  const i = document.createElement('i');
+  const i = createI();
   
   btn.id = 'remove-button';
   btn.className = 'btn-floating btn-large';
@@ -109,11 +105,7 @@ function showQuote(quote, div){ //Like page bulk creation
   i.innerText = 'close';
   li.innerText = `"${quote.sentence}" - ${quote.character.name}`;
 
-  btn.addEventListener('click', (e) => { //Delete button event       
-    e.preventDefault(); 
-    div.removeChild(ul);
-    removeQuote(quote.id); 
-  })
+  removeButtonEvent(btn, quote, ul); //Remove button event       
 
   btn.appendChild(i);
   ul.append(btn, li);
@@ -130,8 +122,6 @@ function randomQuote(){ //Random quote API + Random quote page render
   })
   .catch(console.log);
 }
-
-
 
 function characterImage(char){ //Separate API for character images
   fetch(`https://api.got.show/api/show/characters`)
@@ -199,6 +189,23 @@ const errorHandler = (response) => { //Error handler for JSON requests
 }
 
 // --Event Listeners-- //
+
+function removeButtonEvent(btn, quote, ul){
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); 
+    ul.remove();
+    removeQuote(quote.id); 
+  })
+}
+
+function likeButtonEvent(btn, quote, i){
+  btn.addEventListener('click', () => {
+    likedQuote(quote);
+    i.innerText = 'favorite';
+    btn.style.background = 'transparent';
+    btn.className = 'btn disabled';
+  })
+}
 
 function likedQuotesClickEvent(){
   likedQuotes().addEventListener('click', (e) => {
