@@ -118,7 +118,7 @@ function randomQuote(){ //Random quote API + Random quote page render
   fetch ('https://api.gameofthronesquotes.xyz/v1/random')
   .then(errorHandler)
   .then(data => {
-    randomQuotePage(data)
+    randomQuotePage(data);
   })
   .catch(console.log);
 }
@@ -141,7 +141,7 @@ function characterHouseLogos(char){ //Separate API for house logos
   .catch(console.log)
 }
 
-function quoteFetcher(){ //Local Json server fetch
+function quoteFetcher(){ //Local JSON server fetch
   fetch('http://localhost:3000/favorites')
   .then(errorHandler)
   .then(data => {
@@ -174,7 +174,7 @@ function removeQuote(id){ //Local JSON server DELETE for delete button
     }
   })
   .then(errorHandler)
-  .then(data => { //.try? and .catch
+  .then(data => {
     console.log(data);
   })
   .catch(console.log);
@@ -190,7 +190,7 @@ const errorHandler = (response) => { //Error handler for JSON requests
 
 // --Event Listeners-- //
 
-function removeButtonEvent(btn, quote, ul){
+function removeButtonEvent(btn, quote, ul){ //Remove Button Event
   btn.addEventListener('click', (e) => {
     e.preventDefault(); 
     ul.remove();
@@ -198,7 +198,7 @@ function removeButtonEvent(btn, quote, ul){
   })
 }
 
-function likeButtonEvent(btn, quote, i){
+function likeButtonEvent(btn, quote, i){ //Like Button Event
   btn.addEventListener('click', () => {
     likedQuote(quote);
     i.innerText = 'favorite';
@@ -207,7 +207,7 @@ function likeButtonEvent(btn, quote, i){
   })
 }
 
-function likedQuotesClickEvent(){
+function likedQuotesClickEvent(){ //Liked Quotes Navbar Button Event 
   likedQuotes().addEventListener('click', (e) => {
     e.preventDefault();
     likedQuotesPage();
@@ -215,19 +215,19 @@ function likedQuotesClickEvent(){
 })
 }
 
-function quoteLinkClickEvent(){
+function quoteLinkClickEvent(){ //Random Quote Navbar Button Event
   quoteLink().addEventListener('click', () => {
     randomQuote();
     })
 }
 
-function resetLinkClickEvent(){
+function resetLinkClickEvent(){ //Reset Navbar Button Event
   resetLink().addEventListener('click', () => {
     location.reload();
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { //Loading DOM
   homePage();
   quoteFetcher();
   quoteLinkClickEvent();
