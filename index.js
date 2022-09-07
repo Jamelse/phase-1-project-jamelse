@@ -115,25 +115,32 @@ function showQuote(quote, div){ //Like page bulk creation
 
 function randomQuote(){ //Random quote API + Random quote page render
   fetch ('https://api.gameofthronesquotes.xyz/v1/random')
-  .then(resp => resp.json())
+  .then(errorHandler)
   .then(data => {
     randomQuotePage(data)
   })
+  .catch(console.log);
 }
 
 
 
 function characterImage(char){ //Separate API for character images
   fetch(`https://api.got.show/api/show/characters`)
-  .then(resp => resp.json())
+  .then(errorHandler)
   .then(img =>{
     characterImageCreation(img, char);
   })
+  .catch(console.log);
  }
 
-function characterHouseLogos(char){ //Separate API for house logos
+function characterHouseLogosCreation(logo, char){
+
+}
+
+
+ function characterHouseLogos(char){ //Separate API for house logos
   fetch(`https://api.got.show/api/show/houses`)
-  .then(resp => resp.json())
+  .then(errorHandler)
   .then(logo => {
     const img = document.createElement('img');
     const img2 = document.createElement('img');
@@ -148,14 +155,16 @@ function characterHouseLogos(char){ //Separate API for house logos
       }
     }
   })
+  .catch(console.log)
 }
 
 function quoteFetcher(){ //Local Json server fetch
   fetch('http://localhost:3000/favorites')
-  .then(resp => resp.json())
+  .then(errorHandler)
   .then(data => {
     quotes = data;
   })
+  .catch(console.log);
 }
 
 function likedQuote(quote){ //Local JSON server POST for like button
@@ -167,11 +176,11 @@ function likedQuote(quote){ //Local JSON server POST for like button
     },
     body: JSON.stringify(quote)
   })
-  .then(resp => resp.json())
+  .then(errorHandler)
   .then(data => {
    quotes.push(data);
   })
-  
+  .catch(console.log);
 }
 
 function removeQuote(id){ //Local JSON server DELETE for delete button
@@ -181,10 +190,19 @@ function removeQuote(id){ //Local JSON server DELETE for delete button
       "Content-Type": "application/json"
     }
   })
-  .then(resp => resp.json())
+  .then(errorHandler)
   .then(data => { //.try? and .catch
     console.log(data);
   })
+  .catch(console.log);
+}
+
+const errorHandler = (response) => { //Error handler for JSON requests
+  if (!response.ok){
+    throw Error(response.statusText);
+  } else {
+    return response.json();
+  }
 }
 
 // --Event Listeners-- //
