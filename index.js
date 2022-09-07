@@ -38,12 +38,20 @@ function randomQuotePage(data){ //Rendering Fetch Requests for random quote page
   characterHouseLogos(data.character.house.slug);
 }
 
-
-
 function characterImageCreation(img, char){ //Character Image Creation
   const image = createImg();
   image.src = img.find((i) => i.name.includes(char)).image
   mainDiv().appendChild(image);
+}
+
+function characterHouseLogosCreation(logo, char){
+  const img1 = createImg();
+  const img2 = createImg();
+  img1.className = 'houseLogo';
+  img2.className = 'houseLogo2';
+  img1.src = logo.find((i) => i.name.toLowerCase().includes(`house ${char}`)).logoURL;
+  img2.src = img1.src;
+  mainDiv().append(img1, img2);
 }
 
 function renderQuotePage(quote){ //Random quote page bulk creation- 
@@ -72,6 +80,7 @@ function renderQuotePage(quote){ //Random quote page bulk creation-
   ul.appendChild(li);
   mainDiv().append(btn, h2, ul);
 }
+
 
 function likedQuotesPage(){//Like page rendering
   mainReset();
@@ -133,28 +142,12 @@ function characterImage(char){ //Separate API for character images
   .catch(console.log);
  }
 
-function characterHouseLogosCreation(logo, char){
-
-}
-
-
- function characterHouseLogos(char){ //Separate API for house logos
+function characterHouseLogos(char){ //Separate API for house logos
   fetch(`https://api.got.show/api/show/houses`)
   .then(errorHandler)
   .then(logo => {
-    const img = document.createElement('img');
-    const img2 = document.createElement('img');
-    img.className = "houseLogo";
-    img2.className = 'houseLogo2';
-    for (let x = 0; x<logo.length; x++){
-      if (logo[x].name.toLowerCase().includes(char)){
-       img.src =  logo[x].logoURL;
-         img2.src = img.src;
-        mainDiv().appendChild(img);
-        mainDiv().appendChild(img2);
-      }
-    }
-  })
+    characterHouseLogosCreation(logo, char);
+    })
   .catch(console.log)
 }
 

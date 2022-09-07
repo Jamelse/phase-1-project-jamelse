@@ -13,16 +13,40 @@
       "id": 6
     },
     {
-      "sentence": "Burn them all!",
+      "sentence": "Everyone who makes a joke about a dwarf's height thinks he's the only person ever to make a joke about a dwarf's height.",
       "character": {
-        "name": "Aerys II Targaryen",
-        "slug": "aerys",
+        "name": "Tyrion Lannister",
+        "slug": "tyrion",
         "house": {
-          "name": "House Targaryen of King's Landing",
-          "slug": "targaryen"
+          "name": "House Lannister of Casterly Rock",
+          "slug": "lannister"
         }
       },
       "id": 7
+    },
+    {
+      "sentence": "Love is the death of duty.",
+      "character": {
+        "name": "Jon Snow",
+        "slug": "jon",
+        "house": {
+          "name": "House Stark of Winterfell",
+          "slug": "stark"
+        }
+      },
+      "id": 8
+    },
+    {
+      "sentence": "I grew up with soldiers. I learned how to die a long time ago.",
+      "character": {
+        "name": "Eddard \"Ned\" Stark",
+        "slug": "ned",
+        "house": {
+          "name": "House Stark of Winterfell",
+          "slug": "stark"
+        }
+      },
+      "id": 9
     }
   ]
 }
